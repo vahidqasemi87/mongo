@@ -95,36 +95,31 @@ namespace AppMongoRead.Service
         /// <param name="id"></param>
         /// <param name="document"></param>
 
-        public void UpdateDocumentMany<T>(string collectionName/*, string id, T document*/)
+        public void UpdateDocumentMany<T>(string collectionName)
         {
             Console.WriteLine("Begin ... ");
-            int counter = 0;
             var inject = db.GetCollection<T>(collectionName);
-            //var count = db.GetCollection<T>(collectionName).CountDocumentsAsync(new BsonDocument()).Result;
-            //int flag = 0;
-            // int skip = 0, limit = 100;
-            //do
-            //{
-            //Console.WriteLine($"Skip :{skip}\tLimit : {limit}\tflag:{flag}");
-            var collection = db.GetCollection<T>(collectionName).Find(new BsonDocument()).ToListAsync();/*.Skip(skip).Limit(limit).ToListAsync()*/
-            foreach (var item in (collection.Result as List<Models.TransactionMongo>))
-            {
-                counter++;
-                if (item.Score > 301 && item.RuleId == "567fbfc7ab344566c0caecf2")
-                {
-                long score = 0;
-                score = (item.Score / 100) + 30;
-                var result = inject.UpdateOne(Builders<T>.Filter.Eq("_id", new ObjectId(item.Id)), Builders<T>.Update.Set("Score", score));
-                }
-                //flag++;
-                Console.Clear();
-                Console.WriteLine($"Counter : {counter}");
-                
-            }
-            //skip += 1;
-            //limit += 100;
+            var count = db.GetCollection<T>(collectionName).CountDocumentsAsync(new BsonDocument()).Result;
+             int skip = 0, limit = 100;
 
-            //} while (count > flag);
+            Console.WriteLine($"Skip : {skip}\t\tLimit : {limit}");
+
+            var collection = db.GetCollection<T>(collectionName).Find(new BsonDocument()).Skip(skip).Limit(limit).ToListAsync();
+
+            for (int i = 0; i < count; i++)
+            {
+                foreach (var item in (collection.Result as List<Models.TransactionMongo>))
+                {
+                    if (item.Score > 301 && item.RuleId == "567fbfc7ab344566c0caecf2")
+                    {
+                        long score = 0;
+                        score = (item.Score / 100) + 30;
+                        var result = inject.UpdateOne(Builders<T>.Filter.Eq("_id", new ObjectId(item.Id)), Builders<T>.Update.Set("Score", score));
+                    }
+                }
+                skip += 1;
+                limit += 100;
+            }
 
             Console.WriteLine("Done. :)");
 
@@ -152,6 +147,14 @@ namespace AppMongoRead.Service
 
 
 
+        }
+        public long UpdateDocumentCount<T>(string collectionName)
+        {
+            Console.WriteLine("begin ... ");
+            var collection = db.GetCollection<T>(collectionName);
+            var arrayFilter = Builders<T>.Filter.Gt("Score", 300) & Builders<T>.Filter.Eq("RuleId", new ObjectId("567fbfc7ab344566c0caecf2"));
+            var count = collection.CountDocuments(arrayFilter);
+            return count;
         }
         /// <summary>
         /// Insert document into collection if it does not already exist, or update it if it does

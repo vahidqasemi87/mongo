@@ -449,26 +449,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zero\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Users\\ghasemi.v\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\sam\\RefahClub_14000409_0905\\ReadMongo\\MongoRead\\AppMongoRead\\AppMongoRead.csproj",
+      "projectUniqueName": "E:\\Z\\Refah_Club\\test\\mongo\\mongo\\AppMongoRead\\AppMongoRead.csproj",
       "projectName": "AppMongoRead",
-      "projectPath": "D:\\sam\\RefahClub_14000409_0905\\ReadMongo\\MongoRead\\AppMongoRead\\AppMongoRead.csproj",
-      "packagesPath": "C:\\Users\\Zero\\.nuget\\packages\\",
-      "outputPath": "D:\\sam\\RefahClub_14000409_0905\\ReadMongo\\MongoRead\\AppMongoRead\\obj\\",
+      "projectPath": "E:\\Z\\Refah_Club\\test\\mongo\\mongo\\AppMongoRead\\AppMongoRead.csproj",
+      "packagesPath": "C:\\Users\\ghasemi.v\\.nuget\\packages\\",
+      "outputPath": "E:\\Z\\Refah_Club\\test\\mongo\\mongo\\AppMongoRead\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Zero\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\ghasemi.v\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -476,7 +473,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\Zero\\.nuget\\packages": {},
+        "C:\\Program Files (x86)\\Progress\\Telerik UI for ASP.NET Core R2 2021\\wrappers\\aspnetcore\\Binaries\\AspNet.Core": {},
+        "E:\\Z\\Refah_Club\\04\\RefahClub_14000407_0905\\RefahClub\\packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -515,7 +513,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

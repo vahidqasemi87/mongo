@@ -12,13 +12,13 @@ namespace AppMongoRead
             string bin = Directory.GetCurrentDirectory();
             string fileName = "/connection.txt";
             string[] stringArray = new string[3];
-            if (File.Exists(bin+fileName))
+            if (File.Exists(bin + fileName))
             {
-                stringArray = File.ReadAllLines(bin+fileName);
+                stringArray = File.ReadAllLines(bin + fileName);
             }
             else
             {
-                using (StreamWriter sw = File.CreateText(bin+fileName))
+                using (StreamWriter sw = File.CreateText(bin + fileName))
                 {
                     sw.WriteLine("mongodb://172.21.102.10:27017");
                     sw.WriteLine("CMDB");
@@ -68,49 +68,56 @@ namespace AppMongoRead
                             //string.TryParse(guestId, out guestIdGuid);
                             //if (isValidGuid)
                             //{
-                                //guestIdGuid = guestId;
-                                //var guest = database.LoadDocumentById<TransactionMongo>(collectionName, guestIdGuid);
-                                //Console.Write($"\n" +
-                                //    $"Current info\n" +
-                                //    $"Name: {guest.NationId} \n" +
-                                //    $"Email: {guest.Score}");
+                            //guestIdGuid = guestId;
+                            //var guest = database.LoadDocumentById<TransactionMongo>(collectionName, guestIdGuid);
+                            //Console.Write($"\n" +
+                            //    $"Current info\n" +
+                            //    $"Name: {guest.NationId} \n" +
+                            //    $"Email: {guest.Score}");
 
-                                //Console.WriteLine("\n------------------------------------------\n");
+                            //Console.WriteLine("\n------------------------------------------\n");
 
-                                //Console.WriteLine("Enter new full name (leave empty if no changes");
-                                //var fullName = Console.ReadLine();
+                            //Console.WriteLine("Enter new full name (leave empty if no changes");
+                            //var fullName = Console.ReadLine();
 
-                                //if (!string.IsNullOrEmpty(fullName) && !string.IsNullOrWhiteSpace(fullName))
-                                //{
-                                //    guest.NationId = fullName;
-                                //}
+                            //if (!string.IsNullOrEmpty(fullName) && !string.IsNullOrWhiteSpace(fullName))
+                            //{
+                            //    guest.NationId = fullName;
+                            //}
 
-                                //Console.WriteLine("Enter new score (leave empty if no changes");
-                                //var score = Console.ReadLine();
+                            //Console.WriteLine("Enter new score (leave empty if no changes");
+                            //var score = Console.ReadLine();
 
-                                //if (!string.IsNullOrEmpty(score) && !string.IsNullOrWhiteSpace(score))
-                                //{
-                                //    guest.Score = long.Parse(score);
-                                //}
-                                //database.UpdateDocumentMany<TransactionMongo>(collectionName, guestIdGuid, guest);
-                                database.UpdateDocumentMany<TransactionMongo>(collectionName);
+                            //if (!string.IsNullOrEmpty(score) && !string.IsNullOrWhiteSpace(score))
+                            //{
+                            //    guest.Score = long.Parse(score);
+                            //}
+                            //database.UpdateDocumentMany<TransactionMongo>(collectionName, guestIdGuid, guest);
+                            database.UpdateDocumentMany<TransactionMongo>(collectionName);
 
-                                //Console.WriteLine();
-                                //Console.WriteLine($"IsAcknowledged : {result.IsAcknowledged}");
-                                //Console.WriteLine($"IsModifiedCountAvailable : {result.IsModifiedCountAvailable}");
-                                //Console.WriteLine($"MatchedCount : {result.MatchedCount}");
-                                //Console.WriteLine($"ModifiedCount : {result.ModifiedCount}");
-                                ////Console.WriteLine($"UpsertedId : {result.UpsertedId.AsBsonValue}");
-                                ///
-                                //Console.WriteLine($"Count is  : {result}");
-                                //Console.WriteLine("Done.");
-                                //Console.WriteLine();
+                            //Console.WriteLine();
+                            //Console.WriteLine($"IsAcknowledged : {result.IsAcknowledged}");
+                            //Console.WriteLine($"IsModifiedCountAvailable : {result.IsModifiedCountAvailable}");
+                            //Console.WriteLine($"MatchedCount : {result.MatchedCount}");
+                            //Console.WriteLine($"ModifiedCount : {result.ModifiedCount}");
+                            ////Console.WriteLine($"UpsertedId : {result.UpsertedId.AsBsonValue}");
+                            ///
+                            //Console.WriteLine($"Count is  : {result}");
+                            //Console.WriteLine("Done.");
+                            //Console.WriteLine();
                             //}
                             //else
                             //{
-                                //Console.WriteLine($"Exception: '{guestId}' is not a valid Guid!");
+                            //Console.WriteLine($"Exception: '{guestId}' is not a valid Guid!");
                             //}
 
+                            DialogHelper.ShowContinueMessage();
+                        }
+                        break;
+                    case 6: // Update guest info (by ID)
+                        {
+    
+                            Console.WriteLine("Count is : " + database.UpdateDocumentCount<TransactionMongo>(collectionName));
                             DialogHelper.ShowContinueMessage();
                         }
                         break;

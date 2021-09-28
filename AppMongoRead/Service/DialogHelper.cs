@@ -26,13 +26,15 @@ namespace AppMongoRead.Service
                 "[1] Show guests list. \n" +
                 "[2] Update guest info (by ID). \n" +
                 "[3] Delete guest (by ID). \n" +
-                "[4] Exit. \n");
+                "[4] Exit. \n"+
+                "[6] Count. \n"
+                );
             Console.WriteLine("-------------------------------");
 
             var entry = Console.ReadLine();
             if (!int.TryParse(entry, out choice))
             {
-                choice = 5;
+                choice = 6;
             }
             return choice;
 
