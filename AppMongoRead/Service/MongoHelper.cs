@@ -99,27 +99,38 @@ namespace AppMongoRead.Service
         {
             Console.WriteLine("Begin ... ");
             var inject = db.GetCollection<T>(collectionName);
-            var count = db.GetCollection<T>(collectionName).CountDocumentsAsync(new BsonDocument()).Result;
-             int skip = 0, limit = 100;
+            Console.WriteLine("inject is complete.");
 
-            Console.WriteLine($"Skip : {skip}\t\tLimit : {limit}");
+            //
+            var arrayFilter = Builders<T>.Filter.Gt("Score", 301) & Builders<T>.Filter.Eq("RuleId", new ObjectId("567fbfc7ab344566c0caecf2"));
+            //var arrayFilter = Builders<T>.Filter.Gt("Score", 35) /*& Builders<T>.Filter.Eq("RuleId", new ObjectId("567fbfc7ab344566c0caecf2"))*/;
+            var count01 = inject.CountDocuments(arrayFilter);
+            //
+            //var count = db.GetCollection<T>(collectionName).CountDocumentsAsync(new BsonDocument()).Result;
+            Console.WriteLine("count is complete.");
+            //int skip = 0, limit = 10;
 
-            var collection = db.GetCollection<T>(collectionName).Find(new BsonDocument()).Skip(skip).Limit(limit).ToListAsync();
-
-            for (int i = 0; i < count; i++)
-            {
+            //while (limit <= count)
+            //{
+            //Console.WriteLine($"Skip : {skip}\t\tLimit : {limit} \t\t from {count01}");
+            Console.WriteLine($"from :  {count01}");
+            var collection = db.GetCollection<T>(collectionName).Find(arrayFilter).ToListAsync();/*.Skip(skip).Limit(limit).ToListAsync()*/;
                 foreach (var item in (collection.Result as List<Models.TransactionMongo>))
                 {
-                    if (item.Score > 301 && item.RuleId == "567fbfc7ab344566c0caecf2")
-                    {
+                    //if (item.Score > 35 /*&& item.RuleId == "567fbfc7ab344566c0caecf2"*/)
+                    //if (item.Score >= 301 && item.RuleId == "567fbfc7ab344566c0caecf2")
+                    //{
                         long score = 0;
+                        //score = (item.Score / 2) + 10;
                         score = (item.Score / 100) + 30;
+                        Console.WriteLine($"Score cal is : {item.Score} \t\t   Score new is {score}");
+                        //score = new Random().Next(10, 100);
                         var result = inject.UpdateOne(Builders<T>.Filter.Eq("_id", new ObjectId(item.Id)), Builders<T>.Update.Set("Score", score));
-                    }
+                    //}
                 }
-                skip += 1;
-                limit += 100;
-            }
+                //skip += 1;
+                //limit += 10;
+            //}
 
             Console.WriteLine("Done. :)");
 

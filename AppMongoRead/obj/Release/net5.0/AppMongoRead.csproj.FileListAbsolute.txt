@@ -55,3 +55,4 @@ E:\Z\Refah_Club\test\mongo\mongo\AppMongoRead\obj\Release\net5.0\AppMongoRead.dl
 E:\Z\Refah_Club\test\mongo\mongo\AppMongoRead\obj\Release\net5.0\ref\AppMongoRead.dll
 E:\Z\Refah_Club\test\mongo\mongo\AppMongoRead\obj\Release\net5.0\AppMongoRead.pdb
 E:\Z\Refah_Club\test\mongo\mongo\AppMongoRead\obj\Release\net5.0\AppMongoRead.genruntimeconfig.cache
+E:\Z\Refah_Club\test\mongo\mongo\AppMongoRead\obj\Release\net5.0\AppMongoRead.csproj.AssemblyReference.cache
