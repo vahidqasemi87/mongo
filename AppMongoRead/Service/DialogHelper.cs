@@ -26,7 +26,8 @@ namespace AppMongoRead.Service
                 "[1] Show guests list. \n" +
                 "[2] Update guest info (by ID). \n" +
                 "[3] Delete guest (by ID). \n" +
-                "[4] Exit. \n"+
+                "[5] Sqlserver (by ID). \n" +
+                "[4] Exit. \n" +
                 "[6] Count. \n"
                 );
             Console.WriteLine("-------------------------------");

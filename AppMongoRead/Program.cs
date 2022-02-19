@@ -62,61 +62,17 @@ namespace AppMongoRead
                         break;
                     case 2: // Update guest info (by ID)
                         {
-                            //var guestId = DialogHelper.ShowUpdateGuest();
-                            //string guestIdGuid;
-                            //bool isValidGuid = guestId.Length == 24 ? true : false;
-                            //string.TryParse(guestId, out guestIdGuid);
-                            //if (isValidGuid)
-                            //{
-                            //guestIdGuid = guestId;
-                            //var guest = database.LoadDocumentById<TransactionMongo>(collectionName, guestIdGuid);
-                            //Console.Write($"\n" +
-                            //    $"Current info\n" +
-                            //    $"Name: {guest.NationId} \n" +
-                            //    $"Email: {guest.Score}");
 
-                            //Console.WriteLine("\n------------------------------------------\n");
-
-                            //Console.WriteLine("Enter new full name (leave empty if no changes");
-                            //var fullName = Console.ReadLine();
-
-                            //if (!string.IsNullOrEmpty(fullName) && !string.IsNullOrWhiteSpace(fullName))
-                            //{
-                            //    guest.NationId = fullName;
-                            //}
-
-                            //Console.WriteLine("Enter new score (leave empty if no changes");
-                            //var score = Console.ReadLine();
-
-                            //if (!string.IsNullOrEmpty(score) && !string.IsNullOrWhiteSpace(score))
-                            //{
-                            //    guest.Score = long.Parse(score);
-                            //}
-                            //database.UpdateDocumentMany<TransactionMongo>(collectionName, guestIdGuid, guest);
                             database.UpdateDocumentMany<TransactionMongo>(collectionName);
 
-                            //Console.WriteLine();
-                            //Console.WriteLine($"IsAcknowledged : {result.IsAcknowledged}");
-                            //Console.WriteLine($"IsModifiedCountAvailable : {result.IsModifiedCountAvailable}");
-                            //Console.WriteLine($"MatchedCount : {result.MatchedCount}");
-                            //Console.WriteLine($"ModifiedCount : {result.ModifiedCount}");
-                            ////Console.WriteLine($"UpsertedId : {result.UpsertedId.AsBsonValue}");
-                            ///
-                            //Console.WriteLine($"Count is  : {result}");
-                            //Console.WriteLine("Done.");
-                            //Console.WriteLine();
-                            //}
-                            //else
-                            //{
-                            //Console.WriteLine($"Exception: '{guestId}' is not a valid Guid!");
-                            //}
+
 
                             DialogHelper.ShowContinueMessage();
                         }
                         break;
-                    case 6: // Update guest info (by ID)
+                    case 4: // Update guest info (by ID)
                         {
-    
+
                             Console.WriteLine("Count is : " + database.UpdateDocumentCount<TransactionMongo>(collectionName));
                             DialogHelper.ShowContinueMessage();
                         }
@@ -137,14 +93,29 @@ namespace AppMongoRead
                             {
                                 Console.WriteLine($"Exception: '{guestId}' is not a valid Guid!");
                             }
-
-
                             DialogHelper.ShowContinueMessage();
+                        }
+                        break;
+                    case 5:
+                        {
+                            Console.WriteLine("Sql server relation Begin ...");
+                            PwaHelper.CheckAndInsert();
+                            //PwaHelper.AddUserInMongo(finalUserAdd);
+                            Console.WriteLine("operation is complete.");
+                            Console.WriteLine("press any key to continue ... ");
+                            Console.ReadKey();
+                            DialogHelper.ShowContinueMessage();
+                        }
+                        break;
+                    case 7:
+                        {
+                            PwaHelper.AddUserSample();
+                            Console.ReadKey();
                         }
                         break;
                 }
 
-            } while (menuChoice != 4);
+            } while (menuChoice != 1000);
         }
     }
 }

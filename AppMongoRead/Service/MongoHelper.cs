@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using AppMongoRead.DAL;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -37,10 +38,21 @@ namespace AppMongoRead.Service
         /// <returns></returns>
         public List<T> LoadAllDocuments<T>(string collectionName)
         {
-            var collection = db.GetCollection<T>(collectionName);
-
-            return collection.Find(new BsonDocument()).ToList();
+            try
+            {
+                var collection = db.GetCollection<T>(collectionName);
+                var result = collection.Find(new BsonDocument()).ToList();
+                return result;
         }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : ");
+                Console.WriteLine($"{ex.Message}");
+                Console.ReadKey();
+                return new List<T>() ;
+            }
+
+}
         /// <summary>
         /// لود کردن یک سند با آی دی
         /// </summary>
@@ -55,7 +67,13 @@ namespace AppMongoRead.Service
 
             return collection.Find(filter).First();
         }
-
+        public bool CheckExistNationCode<T>(string collectionName, string nationCode)
+        {
+            var collection = db.GetCollection<T>(collectionName);
+            var filter = Builders<T>.Filter.Eq("NationCode", nationCode);
+            var result = collection.Find(filter).Any();
+            return result;
+        }
         /// <summary>
         /// بروز کردن یکی به روش ریپلیس
         /// </summary>
@@ -115,21 +133,21 @@ namespace AppMongoRead.Service
             //Console.WriteLine($"Skip : {skip}\t\tLimit : {limit} \t\t from {count01}");
             Console.WriteLine($"from :  {count01}");
             var collection = db.GetCollection<T>(collectionName).Find(arrayFilter).ToListAsync();/*.Skip(skip).Limit(limit).ToListAsync()*/;
-                foreach (var item in (collection.Result as List<Models.TransactionMongo>))
-                {
-                    //if (item.Score > 35 /*&& item.RuleId == "567fbfc7ab344566c0caecf2"*/)
-                    //if (item.Score >= 301 && item.RuleId == "567fbfc7ab344566c0caecf2")
-                    //{
-                        long score = 0;
-                        //score = (item.Score / 2) + 10;
-                        score = (item.Score / 100) + 30;
-                        Console.WriteLine($"Score cal is : {item.Score} \t\t   Score new is {score}");
-                        //score = new Random().Next(10, 100);
-                        var result = inject.UpdateOne(Builders<T>.Filter.Eq("_id", new ObjectId(item.Id)), Builders<T>.Update.Set("Score", score));
-                    //}
-                }
-                //skip += 1;
-                //limit += 10;
+            foreach (var item in (collection.Result as List<Models.TransactionMongo>))
+            {
+                //if (item.Score > 35 /*&& item.RuleId == "567fbfc7ab344566c0caecf2"*/)
+                //if (item.Score >= 301 && item.RuleId == "567fbfc7ab344566c0caecf2")
+                //{
+                long score = 0;
+                //score = (item.Score / 2) + 10;
+                score = (item.Score / 100) + 30;
+                Console.WriteLine($"Score cal is : {item.Score} \t\t   Score new is {score}");
+                //score = new Random().Next(10, 100);
+                var result = inject.UpdateOne(Builders<T>.Filter.Eq("_id", new ObjectId(item.Id)), Builders<T>.Update.Set("Score", score));
+                //}
+            }
+            //skip += 1;
+            //limit += 10;
             //}
 
             Console.WriteLine("Done. :)");
@@ -159,6 +177,7 @@ namespace AppMongoRead.Service
 
 
         }
+
         public long UpdateDocumentCount<T>(string collectionName)
         {
             Console.WriteLine("begin ... ");
@@ -196,6 +215,9 @@ namespace AppMongoRead.Service
             collection.DeleteOne(filter);
 
         }
+        public void UpdateDocumentManyPwa<T>(string collectionName)
+        {
 
+        }
     }
 }
