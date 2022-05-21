@@ -1,12 +1,8 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.Options;
-using MongoDB.Bson.Serialization.Serializers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Numerics;
-using System.Xml.Serialization;
 
 namespace AppMongoRead.Models
 {
@@ -27,23 +23,24 @@ namespace AppMongoRead.Models
         public virtual DateTime? DeleteDate { get; set; } = DateTime.Now;
         [BsonRepresentation(BsonType.String)]
         public virtual string UserName { get; set; }
-        public string _LowerCaseUserName;
-        [BsonRepresentation(BsonType.String)]
-        [BsonIgnoreIfNull]
-        public virtual string LowerCaseUserName 
-        {
-            get
-            {
-                if (_LowerCaseUserName == null)
-                    return NationCode;
-                else return NationCode;  //Guid.NewGuid().ToString();
-            }
-            set
-            {
-                _LowerCaseUserName = value;
-            }
-        }
-        [BsonRepresentation(BsonType.String)]
+		public string _LoweCaseUserName { get; set; }
+		public string _LowerCaseUserName;
+		[BsonRepresentation(BsonType.String)]
+		[BsonIgnoreIfNull]
+		public virtual string LowerCaseUserName
+		{
+			get
+			{
+				if (_LowerCaseUserName == null)
+					return NationCode;
+				else return NationCode;  //Guid.NewGuid().ToString();
+			}
+			set
+			{
+				_LowerCaseUserName = value;
+			}
+		}
+		[BsonRepresentation(BsonType.String)]
         public string EmailAddress { get; set; }
         [BsonRepresentation(BsonType.String)]
         public string LowerCaseEmailAddress { get; set; }

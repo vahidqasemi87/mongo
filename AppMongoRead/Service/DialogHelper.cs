@@ -28,7 +28,12 @@ namespace AppMongoRead.Service
                 "[3] Delete guest (by ID). \n" +
                 "[5] Sqlserver (by ID). \n" +
                 "[4] Exit. \n" +
-                "[6] Count. \n"
+                "[5] Check and insert. \n" +
+                "[6] Count. \n" +
+                "[7] UsersUpdate. \n"+
+                "[8] Delete Many. \n"+
+                "[9] Export National Code. \n"+
+                "[10] Check date user by date and insert score ... \n"
                 );
             Console.WriteLine("-------------------------------");
 
@@ -126,6 +131,27 @@ namespace AppMongoRead.Service
             Console.Write("Enter guest ID: ");
 
             return Console.ReadLine();
+        }
+        public static string ShowDeleteGuestMany()
+        {
+            ShowHeader("Delete Guest Many");
+
+            Console.Write("Enter guest Date for delete many: Y/N  : ");
+
+            return Console.ReadLine();
+        }
+        public static string ExportUserInfoByNationalCode()
+        {
+            ShowHeader("Export UserInfo By NationalCode");
+
+            Console.Write("Begin prosess ....  ");
+
+            return Console.ReadLine();
+        }
+        public static void AddUserScoreByDate()
+        {
+            ShowHeader("Insert User Score By Date Created");
+            Console.Write("Begin prosess ....  ");
         }
     }
 }

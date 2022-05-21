@@ -1,6 +1,6 @@
-﻿using System;
+﻿using AppMongoRead.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+using System.IO;
 
 #nullable disable
 
@@ -18,12 +18,35 @@ namespace AppMongoRead.DAL
         }
 
         public virtual DbSet<Final> Finals { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		public virtual DbSet<UserExport> UserExports { get; set; }
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
+            string bin = Directory.GetCurrentDirectory();
+            string fileName = "/dal.txt";
+            string[] stringArray = new string[3];
+            if (File.Exists(bin + fileName))
             {
-                optionsBuilder.UseSqlServer("server=.;database=ZDemo;uid=sa;pwd=Ss1234!@#$");
+                stringArray = File.ReadAllLines(bin + fileName);
+                stringArray = File.ReadAllLines(bin + fileName);
+
+                string connectionString = stringArray[0];
+                //string databaseName = stringArray[1];
+                //string collectionName = stringArray[2];
+                System.Console.WriteLine("Read config sql successful");
+                if (!optionsBuilder.IsConfigured)
+                {
+                    optionsBuilder.UseSqlServer(connectionString);
+                }
             }
+            else
+            {
+                System.Console.WriteLine("Read config sql not successful");
+                if (!optionsBuilder.IsConfigured)
+                {
+                    optionsBuilder.UseSqlServer("server=.;database=ZDemo;uid=sa;pwd=Ss1234!@#$");
+                }
+            }
+     
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
