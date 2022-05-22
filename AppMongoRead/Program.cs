@@ -26,7 +26,8 @@ namespace AppMongoRead
 			{
 				using (StreamWriter sw = File.CreateText(bin + fileName))
 				{
-					sw.WriteLine("mongodb://172.21.102.10:27017");
+					//sw.WriteLine("mongodb://172.21.102.10:27017");
+					sw.WriteLine("mongodb://10.15.6.97:27017");
 					sw.WriteLine("CMDB");
 					sw.WriteLine("Transaction");
 				}
@@ -220,19 +221,24 @@ namespace AppMongoRead
 						}
 					case 10:
 						{
-							var users = database.FindUserByCreateDate<User>(collectionName, new DateTime(2021));
+							//var users = database.FindUserByCreateDate<User>(collectionName, new DateTime(2021));
 
-							List<string> usersUpdate = new();
-							Console.WriteLine("Begin add list");
-							for (int i = 0; i < users.Count; i++)
-							{
-								usersUpdate.Add(users[i].NationCode);
-							}
-							Console.WriteLine("begin update ... ");
-							PwaHelper.AddScoreMongo(usersUpdate);
-							Console.WriteLine("press any key to continue ... ");
-							Console.ReadKey();
-							DialogHelper.ShowContinueMessage();
+							//List<string> usersUpdate = new();
+							//Console.WriteLine("Begin add list");
+							//for (int i = 0; i < users.Count; i++)
+							//{
+							//	usersUpdate.Add(users[i].NationCode);
+							//}
+							//Console.WriteLine("begin update ... ");
+							//PwaHelper.AddScoreMongo(usersUpdate);
+							//Console.WriteLine("press any key to continue ... ");
+							//Console.ReadKey();
+							//DialogHelper.ShowContinueMessage();
+							var transUsers =  database.FindUserInTransaction<TransactionMongo>("Transaction", "567bbdc0ab344566c0caecd3");
+							var finalUsers = database.GetUserNotTrasaction<User>("User", transUsers);
+
+							PwaHelper.AddScoreMongo(finalUsers);
+							Console.WriteLine($"Done. {finalUsers.Count}");
 							break;
 						}
 				}

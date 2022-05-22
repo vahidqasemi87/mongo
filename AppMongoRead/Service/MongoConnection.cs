@@ -25,7 +25,7 @@ namespace AppMongoRead.Service
             {
                 using (StreamWriter sw = File.CreateText(bin + fileName))
                 {
-                    sw.WriteLine("mongodb://172.21.102.10:27017");
+                    sw.WriteLine("mongodb://10.15.6.97:27017");
                     sw.WriteLine("CMDB");
                     sw.WriteLine("Transaction");
                 }

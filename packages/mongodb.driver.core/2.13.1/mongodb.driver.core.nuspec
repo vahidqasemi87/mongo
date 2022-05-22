@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>MongoDB.Driver.Core</id>
+    <version>2.13.1</version>
+    <authors>MongoDB Inc.</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">License.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>packageIcon.png</icon>
+    <projectUrl>https://docs.mongodb.com/drivers/csharp/</projectUrl>
+    <description>Core Component of the Official MongoDB .NET Driver.</description>
+    <copyright>Copyright © 2010-present MongoDB Inc.</copyright>
+    <tags>mongodb mongo nosql</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.2">
+        <dependency id="MongoDB.Bson" version="2.13.1" exclude="Build,Analyzers" />
+        <dependency id="DnsClient" version="1.4.0" exclude="Build,Analyzers" />
+        <dependency id="MongoDB.Libmongocrypt" version="1.2.2" exclude="Build,Analyzers" />
+        <dependency id="SharpCompress" version="0.23.0" exclude="Build,Analyzers" />
+        <dependency id="System.Buffers" version="4.5.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.ValueTuple" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard1.5">
+        <dependency id="MongoDB.Bson" version="2.13.1" exclude="Build,Analyzers" />
+        <dependency id="DnsClient" version="1.4.0" exclude="Build,Analyzers" />
+        <dependency id="MongoDB.Libmongocrypt" version="1.2.2" exclude="Build,Analyzers" />
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+        <dependency id="SharpCompress" version="0.23.0" exclude="Build,Analyzers" />
+        <dependency id="System.Buffers" version="4.5.1" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Specialized" version="4.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.TextWriterTraceListener" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.TraceSource" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Net.NameResolution" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Security" version="4.3.2" exclude="Build,Analyzers" />
+        <dependency id="System.Security.SecureString" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Thread" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.ValueTuple" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="MongoDB.Bson" version="2.13.1" exclude="Build,Analyzers" />
+        <dependency id="DnsClient" version="1.4.0" exclude="Build,Analyzers" />
+        <dependency id="MongoDB.Libmongocrypt" version="1.2.2" exclude="Build,Analyzers" />
+        <dependency id="SharpCompress" version="0.23.0" exclude="Build,Analyzers" />
+        <dependency id="System.Buffers" version="4.5.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="MongoDB.Bson" version="2.13.1" exclude="Build,Analyzers" />
+        <dependency id="DnsClient" version="1.4.0" exclude="Build,Analyzers" />
+        <dependency id="MongoDB.Libmongocrypt" version="1.2.2" exclude="Build,Analyzers" />
+        <dependency id="SharpCompress" version="0.23.0" exclude="Build,Analyzers" />
+        <dependency id="System.Buffers" version="4.5.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/net452/Core/Compression/Snappy/lib/win/snappy32.dll" buildAction="Content" />
+      <files include="any/netstandard1.5/Core/Compression/Snappy/lib/win/snappy32.dll" buildAction="Content" />
+      <files include="any/netstandard2.0/Core/Compression/Snappy/lib/win/snappy32.dll" buildAction="Content" />
+      <files include="any/netstandard2.1/Core/Compression/Snappy/lib/win/snappy32.dll" buildAction="Content" />
+      <files include="any/net452/Core/Compression/Snappy/lib/win/snappy64.dll" buildAction="Content" />
+      <files include="any/netstandard1.5/Core/Compression/Snappy/lib/win/snappy64.dll" buildAction="Content" />
+      <files include="any/netstandard2.0/Core/Compression/Snappy/lib/win/snappy64.dll" buildAction="Content" />
+      <files include="any/netstandard2.1/Core/Compression/Snappy/lib/win/snappy64.dll" buildAction="Content" />
+      <files include="any/net452/Core/Compression/Zstandard/lib/win/libzstd.dll" buildAction="Content" />
+      <files include="any/netstandard1.5/Core/Compression/Zstandard/lib/win/libzstd.dll" buildAction="Content" />
+      <files include="any/netstandard2.0/Core/Compression/Zstandard/lib/win/libzstd.dll" buildAction="Content" />
+      <files include="any/netstandard2.1/Core/Compression/Zstandard/lib/win/libzstd.dll" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+</package>

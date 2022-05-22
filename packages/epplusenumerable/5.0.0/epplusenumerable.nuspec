@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>EPPlusEnumerable</id>
+    <version>5.0.0</version>
+    <authors>Brad Westness</authors>
+    <owners>Brad Westness</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/bradwestness/EPPlusEnumerable</projectUrl>
+    <description>Easily create multi-worksheet Excel documents from any .NET object collection.</description>
+    <releaseNotes>- Targets .NET Standard 2.0
+- Supports EPPlus 5.x
+- Breaking change: removes support for MetadataTypeAttributes as they are not part of .NET Standard 2.0</releaseNotes>
+    <copyright>© Brad Westness 2020</copyright>
+    <tags>epplus,excel,spreadsheet,enumerable</tags>
+    <repository type="git" url="https://github.com/bradwestness/EPPlusEnumerable" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="EPPlus" version="5.0.4" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Annotations" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Common" version="4.7.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

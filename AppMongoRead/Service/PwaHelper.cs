@@ -61,7 +61,11 @@ namespace AppMongoRead.Service
 		}
 		public static void AddScoreMongo(List<string> nationId)
 		{
+			string rid = "567bbdc0ab344566c0caecd3";
+			string pid = null;
+
 			System.Globalization.PersianCalendar pcr = new System.Globalization.PersianCalendar();
+
 			int year = pcr.GetYear(DateTime.Now);
 			int month = pcr.GetMonth(DateTime.Now);
 			int day = pcr.GetDayOfMonth(DateTime.Now);
@@ -70,14 +74,15 @@ namespace AppMongoRead.Service
 			for (int i = 0; i < nationId.Count; i++)
 			{
 				Console.WriteLine($"Users id = {i}\t {nationId[i]}");
+
 				database.InsertDocument("Transaction", new TransactionMongo
 				{
 					Score = 100,
 					NationId = nationId[i],
 					//حتما تغییر یابد
-					RuleId = "6288a20143a90c74e2015fb5",
+					RuleId = rid,
 					//حتما تغییر یابد
-					PlanId = "59cc7e77a91fc0819536cae0",
+					PlanId = pid,
 					CreationOnDay = day,
 					CreationOnMonth = month,
 					CreationOnYear = year,
@@ -86,7 +91,7 @@ namespace AppMongoRead.Service
 					TransactionDateMonth = month,
 					TransactionDateYear = year,
 					CreationOn = DateTime.Now,
-					Description = "Testi500",
+					Description = "عضویت در باشگاه مشتریان",
 				});
 			}
 
@@ -94,7 +99,20 @@ namespace AppMongoRead.Service
 			Console.WriteLine("Insert Complete   :)");
 			GC.Collect();
 		}
-		
+		//public static void CheckScoreExist()
+		//{
+		//	var database = MongoConnection.GetConnectionMongo();
+		//	var result = database.CheckExistNationCode<User>("User", nationCode);
+		//	return result;
+		//}
+		//public static bool CheckExistScore<T>(string collectionName, string nationCode, string ruleId, string planId)
+		//{
+		//	var database = MongoConnection.GetConnectionMongo();
+		//	var collection = database.CheckExistScore<TransactionMongo>(nationCode,ruleId,planId);
+		//	var filter = Builders<T>.Filter.Eq("NationId", nationCode) & Builders<T>.Filter.Eq("RuleId", ruleId) & Builders<T>.Filter.Eq("PlanId", planId);
+		//	var result = collection.Find(filter).Any();
+		//	return result;
+		//}
 		public static void AddUserSample()
 		{
 			var database = MongoConnection.GetConnectionMongo();

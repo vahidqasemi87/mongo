@@ -1,33 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "E:\\SRC\\Code\\mongo\\AppMongoRead\\AppMongoRead.csproj": {}
+    "E:\\SRC\\Code\\mongo\\Version03\\AppMongoRead\\AppMongoRead.csproj": {}
   },
   "projects": {
-    "E:\\SRC\\Code\\mongo\\AppMongoRead\\AppMongoRead.csproj": {
+    "E:\\SRC\\Code\\mongo\\Version03\\AppMongoRead\\AppMongoRead.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SRC\\Code\\mongo\\AppMongoRead\\AppMongoRead.csproj",
+        "projectUniqueName": "E:\\SRC\\Code\\mongo\\Version03\\AppMongoRead\\AppMongoRead.csproj",
         "projectName": "AppMongoRead",
-        "projectPath": "E:\\SRC\\Code\\mongo\\AppMongoRead\\AppMongoRead.csproj",
-        "packagesPath": "E:\\SRC\\Code\\mongo\\packages",
-        "outputPath": "E:\\SRC\\Code\\mongo\\AppMongoRead\\obj\\",
+        "projectPath": "E:\\SRC\\Code\\mongo\\Version03\\AppMongoRead\\AppMongoRead.csproj",
+        "packagesPath": "E:\\SRC\\Code\\mongo\\Version03\\packages",
+        "outputPath": "E:\\SRC\\Code\\mongo\\Version03\\AppMongoRead\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "E:\\SRC\\Code\\mongo\\NuGet.Config",
+          "E:\\SRC\\Code\\mongo\\Version03\\NuGet.Config",
           "C:\\Users\\ghasemi.v\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
-          "E:\\SRC\\Code\\mongo\\AppMongoRead\\bin\\Debug": {},
+          "E:\\SRC\\Code\\mongo\\Version03\\AppMongoRead\\bin\\Debug": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -38,8 +38,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "EPPlusEnumerable": {
               "target": "Package",

@@ -84,6 +84,13 @@ namespace AppMongoRead.Service
 			var result = collection.Find(filter).Any();
 			return result;
 		}
+		public bool CheckExistScore<T>(string collectionName, string nationCode, string ruleId, string planId)
+		{
+			var collection = db.GetCollection<T>(collectionName);
+			var filter = Builders<T>.Filter.Eq("NationId", nationCode) & Builders<T>.Filter.Eq("RuleId", ruleId) & Builders<T>.Filter.Eq("PlanId", planId);
+			var result = collection.Find(filter).Any();
+			return result;
+		}
 		/// <summary>
 		/// بروز کردن یکی به روش ریپلیس
 		/// </summary>
@@ -283,5 +290,26 @@ namespace AppMongoRead.Service
 			var result = collection.Find(x => x.CreateDate >= beginDate && x.CreateDate <= ebdDate).ToList();
 			return result;
 		}
+		public List<string> FindUserInTransaction<T>(string collectionName, string ruleId)
+		{
+			List<string> str = new();
+			var collection = db.GetCollection<TransactionMongo>(collectionName);
+			var result = collection.Find(x => x.RuleId == ruleId).ToList();
+			foreach (var item in result)
+			{
+				str.Add(item.NationId);
+			}
+			return str;
+		}
+		public List<string> GetUserNotTrasaction<T>(string collectionName, IEnumerable<string> str)
+		{
+			var collection = db.GetCollection<User>(collectionName);
+			var listallUser = collection.Find(x=>x.CreateDate >= new DateTime(2021,03,21,0,0,0)).ToList().Select(s=>s.NationCode);
+
+			var dns = listallUser.Except(str).ToList();
+			int count = dns.Count;
+			return dns;
+		}
+
 	}
 }
